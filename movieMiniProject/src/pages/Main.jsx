@@ -14,6 +14,8 @@ const Main = () => {
     <>
       <Swiper
         slidesPerView={5}
+        slidesPerGroup={5}
+        slidesPerGroupSkip={5}
         spaceBetween={30}
         loop={true}
         pagination={{
