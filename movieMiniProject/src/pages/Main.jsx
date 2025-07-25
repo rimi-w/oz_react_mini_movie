@@ -1,21 +1,34 @@
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useMovieListStore } from "../store/MovieListStore";
+import { useEffect } from "react";
 import MovieCard from "../components/MovieCard";
-import data from "../assets/data/movieListData.json";
+import Loading from "./Loading";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 const Main = () => {
-  const moviesData = data.results;
+  const { movieList, isLoading, getMovieList } = useMovieListStore();
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getMovieList(`popular`);
+      return data;
+    }
+    fetchData();
+  }, [getMovieList]);
+
+  if (isLoading) return <Loading />;
+
+  const moviesList = movieList.filter((el) => el.adult === false);
 
   return (
-    <>
+    <div>
       <Swiper
         slidesPerView={5}
         slidesPerGroup={5}
-        slidesPerGroupSkip={5}
         spaceBetween={30}
         loop={true}
         pagination={{
@@ -26,19 +39,19 @@ const Main = () => {
         className="h-[230px]"
       >
         <div>
-          {moviesData.map((movie) => (
+          {moviesList.map((movie) => (
             <SwiperSlide>
               <MovieCard key={movie.id} movie={movie} />
             </SwiperSlide>
           ))}
         </div>
       </Swiper>
-      <div className="flex flex-wrap pt-[20px]">
-        {moviesData.map((movie) => (
+      <div className="flex flex-wrap justify-center pt-[20px]">
+        {moviesList.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

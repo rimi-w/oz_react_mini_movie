@@ -4,7 +4,7 @@ const MovieCard = ({ movie }) => {
   const baseUrl = "https://image.tmdb.org/t/p/w500";
 
   return (
-    <NavLink to={"/details"}>
+    <NavLink to={`/details/${movie.id}`}>
       <div className="w-[150px] h-[200px] flex flex-col justify-center items-center gap-1">
         <img
           className="w-[100px]"
