@@ -1,5 +1,5 @@
 import { NavLink, useRouteError } from "react-router";
-import logo from "../assets/logo.jpg";
+import logo from "../assets/logo.png";
 
 const Error = () => {
   const error = useRouteError();

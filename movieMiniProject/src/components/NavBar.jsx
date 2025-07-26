@@ -1,9 +1,9 @@
 import { NavLink } from "react-router";
-import logo from "../assets/logo.jpg";
+import logo from "../assets/logo.png";
 
 const NavBar = () => {
   return (
-    <nav className="p-5 flex justify-between">
+    <nav className="w-screen h-24 p-[0_40px_15px_30px] flex justify-between items-end bg-black fixed z-50">
       <NavLink to={"/"} end>
         <img
           className="invert size-15 rounded-full"
