@@ -19,6 +19,13 @@ const Detail = () => {
   }, [params.movieId, getMovieDetailData]);
 
   if (isLoading) return <Loading />;
+
+  const getMovieReleaseYear = (movieReleaseDate) => {
+    const date = new Date(movieReleaseDate);
+    return date.getFullYear();
+  };
+
+  const movieReleaseYear = getMovieReleaseYear(movieDetailData.release_date);
   console.log(movieDetailData);
 
   return (
@@ -36,7 +43,10 @@ const Detail = () => {
         />
         <div className="w-[40%] max-h-[562px] flex flex-col items-start gap-3 overflow-y-scroll [&::-webkit-scrollbar]:hidden p-4">
           <div className="flex justify-evenly items-end gap-3">
-            <h1 className="text-3xl font-extrabold">{movieDetailData.title}</h1>
+            <h1 className="text-3xl font-extrabold">
+              {movieDetailData.title}
+              <span className="text-[20px] font-bold pl-2">{`(${movieReleaseYear})`}</span>
+            </h1>
             <p className="text-[15px]">
               ⭐&nbsp;&nbsp;{movieDetailData.vote_average}
             </p>
@@ -47,7 +57,7 @@ const Detail = () => {
                 movieDetailData.genres.map((genre) => genre.name).join(` | `)}
             </span>
           </div>
-          <p className="w-[90%] text-xl text-pretty opacity-60">
+          <p className="text-xl text-pretty opacity-60">
             {movieDetailData.overview}
           </p>
         </div>

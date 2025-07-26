@@ -16,8 +16,8 @@ const Error = () => {
           />
         </div>
       </NavLink>
-      <h1 className="pb-5 text-[#681d1d] text-5xl font-extrabold">Error</h1>
-      <p className="pb-5">
+      <h1 className="text-[#681d1d] text-5xl font-extrabold">Error</h1>
+      <p className="w-[80%] p-5 text-pretty">
         <i>{error.statusText || error.message}</i>
       </p>
     </div>
