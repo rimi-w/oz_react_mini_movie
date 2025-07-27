@@ -6,6 +6,7 @@ export const useMovieListStore = create((set) => ({
   nowPlayingMovieList: [],
   upcomingMovieList: [],
   isLoading: false,
+
   getPopularMovieList: async () => {
     try {
       set({ isLoading: true });

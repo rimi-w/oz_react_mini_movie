@@ -1,67 +1,13 @@
-import { useMovieListStore } from "../store/MovieListStore";
-import { useEffect } from "react";
-import { NavLink } from "react-router";
-import Loading from "./Loading";
-
+import { NavLink, useLoaderData } from "react-router";
 import SwiperMovie from "../components/SwiperMovie";
 
 const Main = () => {
-  const {
-    popularMovieList,
-    topRatedMovieList,
-    nowPlayingMovieList,
-    upcomingMovieList,
-    isLoading,
-    getPopularMovieList,
-    getTopRatedMovieList,
-    getNowPlayingMovieList,
-    getUpcomingMovieList,
-  } = useMovieListStore();
+  const { nowPlaying, upcoming, topRated, popular } = useLoaderData();
 
-  useEffect(() => {
-    async function fetchData() {
-      const data = await getPopularMovieList();
-      return data;
-    }
-    fetchData();
-  }, [getPopularMovieList]);
-
-  useEffect(() => {
-    async function fetchData() {
-      const data = await getTopRatedMovieList();
-      return data;
-    }
-    fetchData();
-  }, [getTopRatedMovieList]);
-
-  useEffect(() => {
-    async function fetchData() {
-      const data = await getNowPlayingMovieList();
-      return data;
-    }
-    fetchData();
-  }, [getNowPlayingMovieList]);
-
-  useEffect(() => {
-    async function fetchData() {
-      const data = await getUpcomingMovieList();
-      return data;
-    }
-    fetchData();
-  }, [getUpcomingMovieList]);
-
-  if (isLoading) return <Loading />;
-
-  const popularMoviesList = popularMovieList.filter((el) => el.adult === false);
-  const topRatedMoviesList = topRatedMovieList.filter(
-    (el) => el.adult === false
-  );
-  const nowPlayingMoviesList = nowPlayingMovieList.filter(
-    (el) => el.adult === false
-  );
-  const upcomingMoviesList = upcomingMovieList.filter(
-    (el) => el.adult === false
-  );
+  const nowPlayingMoviesList = nowPlaying.filter((el) => el.adult === false);
+  const upcomingMoviesList = upcoming.filter((el) => el.adult === false);
+  const topRatedMoviesList = topRated.filter((el) => el.adult === false);
+  const popularMoviesList = popular.filter((el) => el.adult === false);
 
   return (
     <>

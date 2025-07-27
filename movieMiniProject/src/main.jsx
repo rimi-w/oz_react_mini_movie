@@ -9,6 +9,13 @@ import NowPlayingMovie from "./pages/NowPlayingMovie.jsx";
 import UpcomingMovie from "./pages/UpcomingMovie.jsx";
 import TopRatedMovie from "./pages/TopRatedMovie.jsx";
 import PopularMovie from "./pages/PopularMovie.jsx";
+import Loading from "./pages/Loading.jsx";
+import { mainPageLoader } from "./loaders/mainPageLoader.jsx";
+import { nowPlayingMoviesLoader } from "./loaders/nowPlayingMoviesLoader.jsx";
+import { upcomingMoviesLoader } from "./loaders/upcomingMoviesLoader.jsx";
+import { topRatedMoviesLoader } from "./loaders/topRatedMoviesLoader.jsx";
+import { popularMoviesLoader } from "./loaders/popularMoviesLoader.jsx";
+import { movieDetailLoader } from "./loaders/movieDetailLoader.jsx";
 
 const router = createBrowserRouter([
   {
@@ -19,26 +26,32 @@ const router = createBrowserRouter([
       {
         index: true,
         Component: Main,
+        loader: mainPageLoader,
       },
       {
         path: "now-playing",
         Component: NowPlayingMovie,
+        loader: nowPlayingMoviesLoader,
       },
       {
         path: "upcoming",
         Component: UpcomingMovie,
+        loader: upcomingMoviesLoader,
       },
       {
         path: "top-rated",
         Component: TopRatedMovie,
+        loader: topRatedMoviesLoader,
       },
       {
         path: "popular",
         Component: PopularMovie,
+        loader: popularMoviesLoader,
       },
       {
         path: "details/:movieId",
         Component: Detail,
+        loader: movieDetailLoader,
       },
     ],
   },

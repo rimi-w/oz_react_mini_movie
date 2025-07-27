@@ -1,24 +1,8 @@
-import { useParams } from "react-router";
-import { useEffect } from "react";
-import { useMovieDetailDataStore } from "../store/MovieListStore";
-import Loading from "./Loading";
+import { useLoaderData } from "react-router";
 
 const Detail = () => {
-  const { movieDetailData, getMovieDetailData, isLoading } =
-    useMovieDetailDataStore();
-  const params = useParams();
+  const movieDetailData = useLoaderData();
   const baseUrl = "https://image.tmdb.org/t/p/w500";
-
-  useEffect(() => {
-    async function fetchData() {
-      if (params.movieId) {
-        await getMovieDetailData(params.movieId);
-      }
-    }
-    fetchData();
-  }, [params.movieId, getMovieDetailData]);
-
-  if (isLoading) return <Loading />;
 
   const getMovieReleaseYear = (movieReleaseDate) => {
     const date = new Date(movieReleaseDate);
@@ -26,7 +10,6 @@ const Detail = () => {
   };
 
   const movieReleaseYear = getMovieReleaseYear(movieDetailData.release_date);
-  console.log(movieDetailData);
 
   return (
     <article className="w-screen h-[calc(100vh-100px)] absolute bottom-0 flex flex-col justify-center items-center gap-5">
