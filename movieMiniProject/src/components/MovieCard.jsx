@@ -18,6 +18,9 @@ const MovieCard = ({ movie }) => {
           src={baseUrl + movie.backdrop_path}
           alt={`${movie.title}의 포스터`}
         />
+        {!movie.backdrop_path && (
+          <div className="w-[300px] h-[120px] rounded-2xl bg-black"></div>
+        )}
         <div className="w-[100%] rounded-[0_0_16px_16px] flex justify-between items-end gap-3 bg-[#0000004c] p-[3px_15px] absolute bottom-0">
           <h1 className="text-[20px] font-extrabold">
             {movie.title}

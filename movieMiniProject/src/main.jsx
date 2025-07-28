@@ -1,5 +1,12 @@
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { mainPageLoader } from "./loaders/mainPageLoader.jsx";
+import { nowPlayingMoviesLoader } from "./loaders/nowPlayingMoviesLoader.jsx";
+import { upcomingMoviesLoader } from "./loaders/upcomingMoviesLoader.jsx";
+import { topRatedMoviesLoader } from "./loaders/topRatedMoviesLoader.jsx";
+import { popularMoviesLoader } from "./loaders/popularMoviesLoader.jsx";
+import { movieDetailLoader } from "./loaders/movieDetailLoader.jsx";
+import { searchedMovieLoader } from "./loaders/allMoviesLoader.jsx";
 import "./index.css";
 import App from "./App.jsx";
 import Detail from "./pages/Detail.jsx";
@@ -10,12 +17,7 @@ import UpcomingMovie from "./pages/UpcomingMovie.jsx";
 import TopRatedMovie from "./pages/TopRatedMovie.jsx";
 import PopularMovie from "./pages/PopularMovie.jsx";
 import Loading from "./pages/Loading.jsx";
-import { mainPageLoader } from "./loaders/mainPageLoader.jsx";
-import { nowPlayingMoviesLoader } from "./loaders/nowPlayingMoviesLoader.jsx";
-import { upcomingMoviesLoader } from "./loaders/upcomingMoviesLoader.jsx";
-import { topRatedMoviesLoader } from "./loaders/topRatedMoviesLoader.jsx";
-import { popularMoviesLoader } from "./loaders/popularMoviesLoader.jsx";
-import { movieDetailLoader } from "./loaders/movieDetailLoader.jsx";
+import Search from "./pages/Search.jsx";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +60,12 @@ const router = createBrowserRouter([
         path: "details/:movieId",
         Component: Detail,
         loader: movieDetailLoader,
+        hydrateFallbackElement: <Loading />,
+      },
+      {
+        path: "search",
+        Component: Search,
+        loader: searchedMovieLoader,
         hydrateFallbackElement: <Loading />,
       },
       // {

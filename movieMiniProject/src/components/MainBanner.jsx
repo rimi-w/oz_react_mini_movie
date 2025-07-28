@@ -45,6 +45,10 @@ const MainBanner = ({ moviesList }) => {
         loop={true}
         breakpoints={{
           // 반응형
+          391: {
+            slidesPerView: 2,
+            slidesPerGroup: 1,
+          },
           652: {
             slidesPerView: 3,
             slidesPerGroup: 2,

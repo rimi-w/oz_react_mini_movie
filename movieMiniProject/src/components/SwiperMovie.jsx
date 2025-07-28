@@ -12,7 +12,7 @@ import "swiper/css/navigation";
 const SwiperMovie = ({ moviesList }) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
-  const [isReady, setIsReady] = useState(false);
+  const [, setIsReady] = useState(false);
 
   // 버튼 렌더 이후 Swiper 연결
   useEffect(() => {
@@ -39,16 +39,20 @@ const SwiperMovie = ({ moviesList }) => {
       </div>
 
       <Swiper
-        slidesPerView={2}
-        slidesPerGroup={1}
-        spaceBetween={10}
-        // centeredSlides={true}
+        slidesPerView={1}
+        spaceBetween={30}
+        centeredSlides={true}
         loop={true}
         pagination={{
           clickable: true,
         }}
         breakpoints={{
           // 반응형
+          431: {
+            slidesPerView: 2,
+            slidesPerGroup: 1,
+            spaceBetween: 10,
+          },
           857: {
             slidesPerView: 3,
             slidesPerGroup: 2,
