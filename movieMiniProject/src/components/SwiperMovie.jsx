@@ -48,6 +48,7 @@ const SwiperMovie = ({ moviesList }) => {
           clickable: true,
         }}
         breakpoints={{
+          // 반응형
           857: {
             slidesPerView: 3,
             slidesPerGroup: 2,

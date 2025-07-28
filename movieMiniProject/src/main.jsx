@@ -22,37 +22,48 @@ const router = createBrowserRouter([
     path: "/",
     Component: App,
     errorElement: <Error />,
+    hydrateFallbackElement: <Loading />,
     children: [
       {
         index: true,
         Component: Main,
         loader: mainPageLoader,
+        hydrateFallbackElement: <Loading />,
       },
       {
         path: "now-playing",
         Component: NowPlayingMovie,
         loader: nowPlayingMoviesLoader,
+        hydrateFallbackElement: <Loading />,
       },
       {
         path: "upcoming",
         Component: UpcomingMovie,
         loader: upcomingMoviesLoader,
+        hydrateFallbackElement: <Loading />,
       },
       {
         path: "top-rated",
         Component: TopRatedMovie,
         loader: topRatedMoviesLoader,
+        hydrateFallbackElement: <Loading />,
       },
       {
         path: "popular",
         Component: PopularMovie,
         loader: popularMoviesLoader,
+        hydrateFallbackElement: <Loading />,
       },
       {
         path: "details/:movieId",
         Component: Detail,
         loader: movieDetailLoader,
+        hydrateFallbackElement: <Loading />,
       },
+      // {
+      //   path: "loading",
+      //   Component: Loading,
+      // },
     ],
   },
 ]);
