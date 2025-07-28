@@ -1,0 +1,140 @@
+import { create } from "zustand";
+
+export const useMovieListStore = create((set) => ({
+  popularMovieList: [],
+  topRatedMovieList: [],
+  nowPlayingMovieList: [],
+  upcomingMovieList: [],
+  isLoading: false,
+
+  getPopularMovieList: async () => {
+    try {
+      set({ isLoading: true });
+      const { VITE_API_TOKEN } = import.meta.env;
+      const options = {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          Authorization: `Bearer ${VITE_API_TOKEN}`,
+        },
+      };
+      const res = await fetch(
+        `https://api.themoviedb.org/3/movie/popular?language=ko-KR&page=1`,
+        options
+      );
+      const data = await res.json();
+      if (res.ok) {
+        set({ popularMovieList: data.results });
+      }
+    } catch (error) {
+      console.log(`error : `, error);
+    } finally {
+      set({ isLoading: false });
+    }
+  },
+  getTopRatedMovieList: async () => {
+    try {
+      set({ isLoading: true });
+      const { VITE_API_TOKEN } = import.meta.env;
+      const options = {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          Authorization: `Bearer ${VITE_API_TOKEN}`,
+        },
+      };
+      const res = await fetch(
+        `https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=1`,
+        options
+      );
+      const data = await res.json();
+      if (res.ok) {
+        set({ topRatedMovieList: data.results });
+      }
+    } catch (error) {
+      console.log(`error : `, error);
+    } finally {
+      set({ isLoading: false });
+    }
+  },
+  getNowPlayingMovieList: async () => {
+    try {
+      set({ isLoading: true });
+      const { VITE_API_TOKEN } = import.meta.env;
+      const options = {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          Authorization: `Bearer ${VITE_API_TOKEN}`,
+        },
+      };
+      const res = await fetch(
+        `https://api.themoviedb.org/3/movie/now_playing?language=ko-KR&page=1`,
+        options
+      );
+      const data = await res.json();
+      if (res.ok) {
+        set({ nowPlayingMovieList: data.results });
+      }
+    } catch (error) {
+      console.log(`error : `, error);
+    } finally {
+      set({ isLoading: false });
+    }
+  },
+  getUpcomingMovieList: async () => {
+    try {
+      set({ isLoading: true });
+      const { VITE_API_TOKEN } = import.meta.env;
+      const options = {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          Authorization: `Bearer ${VITE_API_TOKEN}`,
+        },
+      };
+      const res = await fetch(
+        `https://api.themoviedb.org/3/movie/upcoming?language=ko-KR&page=1`,
+        options
+      );
+      const data = await res.json();
+      if (res.ok) {
+        set({ upcomingMovieList: data.results });
+      }
+    } catch (error) {
+      console.log(`error : `, error);
+    } finally {
+      set({ isLoading: false });
+    }
+  },
+}));
+
+export const useMovieDetailDataStore = create((set) => ({
+  movieDetailData: {},
+  isLoading: false,
+  getMovieDetailData: async (movieId) => {
+    try {
+      set({ isLoading: true });
+      const { VITE_API_TOKEN } = import.meta.env;
+      const options = {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          Authorization: `Bearer ${VITE_API_TOKEN}`,
+        },
+      };
+      const res = await fetch(
+        `https://api.themoviedb.org/3/movie/${movieId}?language=ko-KR`,
+        options
+      );
+      const data = await res.json();
+      if (res.ok) {
+        set({ movieDetailData: data });
+      }
+    } catch (error) {
+      console.log(`error : `, error);
+    } finally {
+      set({ isLoading: false });
+    }
+  },
+}));
