@@ -18,7 +18,7 @@ const Loading = () => {
             className="size-40 absolute top-15 left-10 rounded-full invert animate-bounce"
           />
         </div>
-        <p className="text-4xl font-bold">
+        <p className="text-2xl sm:text-4xl font-bold">
           OZ가 영화를 가지고 뛰어오고 있어요!!
         </p>
       </div>
