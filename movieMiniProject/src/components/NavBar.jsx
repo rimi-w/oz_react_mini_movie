@@ -73,7 +73,7 @@ const NavBar = () => {
               src={lightToggle}
               alt="라이트모드 전환 버튼"
               className="invert size-7"
-              // onClick={toggleMode()}
+              onClick={toggleMode}
             />
           )}
           {!isDark && (
@@ -81,13 +81,13 @@ const NavBar = () => {
               src={darkToggle}
               alt="다크모드 전환 버튼"
               className="invert size-7"
-              // onClick={toggleMode()}
+              onClick={toggleMode}
             />
           )}
         </div>
         <div className=" items-end gap-3 text-[15px] ml-[20px] hidden sm:flex sm:block">
-          <button>LogIn</button>
-          <button>SignUp</button>
+          <button onClick={() => navigate(`/login`)}>LogIn</button>
+          <button onClick={() => navigate(`/signup`)}>SignUp</button>
         </div>
       </div>
     </nav>
