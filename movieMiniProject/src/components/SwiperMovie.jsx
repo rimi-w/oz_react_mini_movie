@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import { useEffect, useRef, useState } from "react";
 import MovieCard from "./MovieCard";
 import prevButton from "../assets/prevButtonBlack.png";
@@ -12,7 +12,7 @@ import "swiper/css/navigation";
 const SwiperMovie = ({ moviesList }) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
-  const [isReady, setIsReady] = useState(false);
+  const [, setIsReady] = useState(false);
 
   // 버튼 렌더 이후 Swiper 연결
   useEffect(() => {
@@ -39,16 +39,19 @@ const SwiperMovie = ({ moviesList }) => {
       </div>
 
       <Swiper
-        slidesPerView={2}
-        slidesPerGroup={1}
-        spaceBetween={10}
-        // centeredSlides={true}
+        slidesPerView="auto"
+        spaceBetween={30}
+        centeredSlides={true}
+        centerInsufficientSlides={true}
         loop={true}
-        pagination={{
-          clickable: true,
-        }}
+        loopAdditionalSlides={1}
         breakpoints={{
           // 반응형
+          625: {
+            slidesPerView: 2,
+            slidesPerGroup: 1,
+            spaceBetween: 10,
+          },
           857: {
             slidesPerView: 3,
             slidesPerGroup: 2,
@@ -70,7 +73,7 @@ const SwiperMovie = ({ moviesList }) => {
           "--swiper-navigation-color": "#0044989a",
           "--swiper-navigation-sides-offset": "30px",
         }}
-        modules={[Pagination, Navigation]}
+        modules={[Navigation]}
         className="h-[250px]"
       >
         <div className="mt-[30px]">

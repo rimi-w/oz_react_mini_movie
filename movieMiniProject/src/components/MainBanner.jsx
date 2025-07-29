@@ -38,13 +38,17 @@ const MainBanner = ({ moviesList }) => {
       </div>
 
       <Swiper
-        slidesPerView={2}
-        slidesPerGroup={1}
+        slidesPerView="auto"
         spaceBetween={10}
-        // centeredSlides={true}
+        centeredSlides={true}
+        centerInsufficientSlides={true}
         loop={true}
         breakpoints={{
           // 반응형
+          391: {
+            slidesPerView: 2,
+            slidesPerGroup: 1,
+          },
           652: {
             slidesPerView: 3,
             slidesPerGroup: 2,
