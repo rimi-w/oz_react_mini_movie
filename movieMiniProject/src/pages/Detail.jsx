@@ -18,13 +18,13 @@ const Detail = () => {
         src={baseUrl + movieDetailData.backdrop_path}
         alt={`${movieDetailData.title}의 포스터`}
       />
-      <div className="w-screen h-[90%] flex justify-center items-center gap-5 bg-[#00000058]">
+      <div className="w-screen h-[90%] flex flex-col justify-center items-center gap-5 lg:flex-row bg-[#00000058]">
         <img
-          className="w-[50%] max-w-[371px] min-w-[331px] max-h-[548px] shadow-[1px_1px_10px_10px_#ffffff55] rounded-4xl"
+          className="w-[50%] max-w-[371px] min-w-[331px] max-h-[548px] opacity-70 lg:opacity-100 shadow-[1px_1px_10px_10px_#ffffff55] rounded-4xl"
           src={baseUrl + movieDetailData.poster_path}
           alt={`${movieDetailData.title}의 포스터`}
         />
-        <div className="w-[40%] max-h-[562px] flex flex-col items-start gap-3 overflow-y-scroll [&::-webkit-scrollbar]:hidden p-4">
+        <div className="w-[80%] max-h-[562px] lg:w-[40%] absolute bg-[#00000058] lg:relative lg:bg-[#ffffff00] flex flex-col items-start gap-3 overflow-y-scroll [&::-webkit-scrollbar]:hidden p-7">
           <div className="flex justify-evenly items-end gap-3">
             <h1 className="text-3xl font-extrabold">
               {movieDetailData.title}
