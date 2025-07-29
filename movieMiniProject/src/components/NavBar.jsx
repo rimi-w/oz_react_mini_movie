@@ -1,6 +1,9 @@
 import { NavLink, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
+import darkToggle from "../assets/darkToggle.png";
+import lightToggle from "../assets/lightToggle.png";
+import { useModeStore } from "../store/ModeStore";
 
 const useDebounce = (searchString) => {
   const [debounce, setDebounce] = useState(``);
@@ -18,8 +21,11 @@ const useDebounce = (searchString) => {
 const NavBar = () => {
   const [searchedString, setSearchedString] = useState(``);
   const [searchString, setSearchString] = useState("");
-  const navigate = useNavigate();
+  const { isDark, toggleMode } = useModeStore();
   const debounceValue = useDebounce(searchString);
+  const navigate = useNavigate();
+
+  console.log(isDark);
 
   useEffect(() => {
     if (debounceValue) {
@@ -60,9 +66,29 @@ const NavBar = () => {
           }
         }}
       />
-      <div className=" items-end gap-3 text-[15px] ml-[20px] hidden sm:flex sm:block">
-        <button>LogIn</button>
-        <button>SignUp</button>
+      <div className="flex flex-col items-end gap-2">
+        <div className="flex">
+          {isDark && (
+            <img
+              src={lightToggle}
+              alt="라이트모드 전환 버튼"
+              className="invert size-7"
+              // onClick={toggleMode()}
+            />
+          )}
+          {!isDark && (
+            <img
+              src={darkToggle}
+              alt="다크모드 전환 버튼"
+              className="invert size-7"
+              // onClick={toggleMode()}
+            />
+          )}
+        </div>
+        <div className=" items-end gap-3 text-[15px] ml-[20px] hidden sm:flex sm:block">
+          <button>LogIn</button>
+          <button>SignUp</button>
+        </div>
       </div>
     </nav>
   );
