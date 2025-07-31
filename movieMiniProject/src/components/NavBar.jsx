@@ -29,6 +29,7 @@ const NavBar = () => {
         } else {
           setIsUser(false);
           console.log("❌ 로그아웃됨");
+          console.log(isUser);
         }
       }
     );
@@ -116,11 +117,19 @@ const NavBar = () => {
             <button onClick={() => navigate(`/login`)}>LogIn</button>
           </div>
         )}
-        {isUser && (
+        {isUser && userData && userData.avatar_url === undefined && (
           <img
             src={profile}
             alt="프로필 사진"
-            className="invert size-11 ml-[16px]"
+            className="invert size-11 ml-[16px] rounded-full"
+            onClick={handleProfile}
+          />
+        )}
+        {isUser && userData && userData.avatar_url && (
+          <img
+            src={userData.avatar_url}
+            alt="프로필 사진"
+            className="size-11 ml-[16px] rounded-full"
             onClick={handleProfile}
           />
         )}
@@ -139,10 +148,10 @@ const NavBar = () => {
               </p>
             </NavLink>
             <p
-              onClick={() => {
-                signOut();
+              onClick={async () => {
+                const result = await signOut();
                 handleProfile();
-                if (!isUser) return navigate(`/`);
+                result && navigate(`/`);
               }}
               className="w-[100%] text-center text-[#0000006f] active:text-[#0f2374cf] border-[#8484847b] border-t-2 p-[8px_0] hover:bg-[#7396ffb1]"
             >

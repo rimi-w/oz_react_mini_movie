@@ -63,9 +63,11 @@ export const useLoginStore = create((set) => ({
       console.error("로그아웃 실패:", error.message);
       set(() => ({ isUser: true }));
       alert("로그아웃 실패: " + error.message);
+      return false;
     } else {
       console.log("로그아웃 성공:");
       set(() => ({ isUser: false }));
+      return true;
     }
   },
 }));

@@ -26,8 +26,8 @@ const Login = () => {
     <>
       <form
         onSubmit={(e) => {
+          isUser && navigate(`/`);
           logInWithEmail(e, emailInput, passwordInput);
-          if (isUser) return navigate(`/`);
         }}
         className="pt-[200px] flex flex-col justify-center items-center gap-10"
       >
