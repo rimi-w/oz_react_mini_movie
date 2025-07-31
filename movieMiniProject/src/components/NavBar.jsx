@@ -108,7 +108,7 @@ const NavBar = () => {
       <input
         value={searchedString}
         type="text"
-        className="w-[65%] h-10 bg-[#ffffff80] rounded-full p-[0_20px]"
+        className="w-[60%] h-10 bg-[#ffffff80] rounded-full p-[0_20px]"
         placeholder="🔍 영화 제목을 검색하세요"
         onChange={(e) => {
           setSearchString(e.target.value);
@@ -127,7 +127,7 @@ const NavBar = () => {
         }}
       />
       <div className="flex items-end gap-2">
-        <div className="flex pb-[30.5px] sm:pb-0">
+        <div className="flex">
           {isDark && (
             <img
               src={lightToggle}
@@ -146,9 +146,8 @@ const NavBar = () => {
           )}
         </div>
         {!user && (
-          <div className=" items-end gap-3 text-[15px] ml-[10px] hidden sm:flex sm:flex-col sm:block">
+          <div className="w-12.5 items-end gap-3 text-[15px] ml-[10px] hidden sm:flex sm:flex-col sm:block">
             <button onClick={() => navigate(`/login`)}>LogIn</button>
-            <button onClick={() => navigate(`/signup`)}>SignUp</button>
           </div>
         )}
         {user && (
@@ -160,13 +159,18 @@ const NavBar = () => {
           />
         )}
         {profileClick && (
-          <div className="w-30 flex flex-col justify-center items-center p-1 absolute right-10 top-[90px] bg-[#ffffff55] rounded-[5px]">
-            <p className="w-[100%] text-center pb-2 text-[#ffffffaf] border-b-2 border-[#8484847b]">
+          <div className="w-30 flex flex-col justify-center items-center p-1 absolute right-10 top-[90px] bg-[#ffffff92] rounded-[5px]">
+            <p className="w-[100%] text-center pb-2 text-[#ffffffc8] border-b-2 border-[#8484847b]">
               {userName} 님
             </p>
+            <NavLink to={`/my-page`} onClick={handleProfile}>
+              <p className="text-[#0000006f] active:text-[#0f2374cf] p-[8px_0]">
+                My page
+              </p>
+            </NavLink>
             <p
               onClick={signOut}
-              className="text-[#0000006f] active:text-[#0f2374cf] p-[8px_0]"
+              className="w-[100%] text-center text-[#0000006f] active:text-[#0f2374cf] border-[#8484847b] border-t-2 p-[8px_0]"
             >
               Logout
             </p>
