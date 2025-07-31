@@ -18,6 +18,9 @@ import TopRatedMovie from "./pages/TopRatedMovie.jsx";
 import PopularMovie from "./pages/PopularMovie.jsx";
 import Loading from "./pages/Loading.jsx";
 import Search from "./pages/Search.jsx";
+import Login from "./pages/logIn.jsx";
+import Signup from "./pages/Signup.jsx";
+import MyPage from "./pages/MyPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +70,18 @@ const router = createBrowserRouter([
         Component: Search,
         loader: searchedMovieLoader,
         hydrateFallbackElement: <Loading />,
+      },
+      {
+        path: "login",
+        Component: Login,
+      },
+      {
+        path: "signup",
+        Component: Signup,
+      },
+      {
+        path: "my-page",
+        Component: MyPage,
       },
       // {
       //   path: "loading",
