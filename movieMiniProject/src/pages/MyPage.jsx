@@ -13,6 +13,8 @@ function MyPage() {
     !isUser && (navigate(`/login`), alert(`로그인이 필요합니다`));
   }, [isUser, navigate]);
 
+  if (!isUser) return null;
+
   return (
     <div className="pt-[150px] flex">
       <div className="w-[300px] flex flex-col justify-center items-center gap-1 p-8">

@@ -1,8 +1,12 @@
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigation } from "react-router";
 
 const Detail = () => {
   const movieDetailData = useLoaderData();
   const baseUrl = "https://image.tmdb.org/t/p/w500";
+  const navigation = useNavigation(); //  로딩상태를 알려주는 react-router hook
+  const isLoading = navigation.state === "loading";
+
+  if (isLoading) return null; // 로딩일때 다태알패이지 안보이게 하기
 
   const getMovieReleaseYear = (movieReleaseDate) => {
     const date = new Date(movieReleaseDate);
