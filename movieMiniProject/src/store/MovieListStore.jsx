@@ -57,7 +57,7 @@ export const useMovieListStore = create((set) => ({
       set({ isLoading: false });
     }
   },
-  getNowPlayingMovieList: async () => {
+  getNowPlayingMovieList: async (page) => {
     try {
       set({ isLoading: true });
       const { VITE_API_TOKEN } = import.meta.env;
@@ -69,12 +69,15 @@ export const useMovieListStore = create((set) => ({
         },
       };
       const res = await fetch(
-        `https://api.themoviedb.org/3/movie/now_playing?language=ko-KR&page=1`,
+        `https://api.themoviedb.org/3/movie/now_playing?language=ko-KR&page=${page}`,
         options
       );
       const data = await res.json();
       if (res.ok) {
-        set({ nowPlayingMovieList: data.results });
+        set((state) => ({
+          nowPlayingMovieList: [...state.nowPlayingMovieList, ...data.results],
+        }));
+        return data;
       }
     } catch (error) {
       console.log(`error : `, error);

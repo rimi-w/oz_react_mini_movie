@@ -25,11 +25,11 @@ const NavBar = () => {
       (event, session) => {
         if (session) {
           setIsUser(true);
-          console.log("✅ 로그인 상태:", session.user);
+          // console.log("✅ 로그인 상태:", session.user);
         } else {
           setIsUser(false);
-          console.log("❌ 로그아웃됨");
-          console.log(isUser);
+          // console.log("❌ 로그아웃됨");
+          // console.log(isUser);
         }
       }
     );

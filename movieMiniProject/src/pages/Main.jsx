@@ -5,7 +5,9 @@ import MainBanner from "../components/MainBanner";
 const Main = () => {
   const { nowPlaying, upcoming, topRated, popular } = useLoaderData();
 
-  const nowPlayingMoviesList = nowPlaying.filter((el) => el.adult === false);
+  const nowPlayingMoviesList = nowPlaying.results.filter(
+    (el) => el.adult === false
+  );
   const upcomingMoviesList = upcoming.filter((el) => el.adult === false);
   const topRatedMoviesList = topRated.filter((el) => el.adult === false);
   const popularMoviesList = popular.filter((el) => el.adult === false);

@@ -20,7 +20,7 @@ const Login = () => {
     logInWithGithub,
   } = useLoginStore();
 
-  console.log(isUser);
+  // console.log(isUser);
 
   return (
     <>

@@ -18,7 +18,7 @@ export const useLoginStore = create((set) => ({
       set(() => ({ isUser: false }));
       alert("로그인 실패: " + error.message);
     } else {
-      console.log("로그인 성공:", data);
+      // console.log("로그인 성공:", data);
       set(() => ({ isUser: true }));
     }
   },
@@ -60,12 +60,12 @@ export const useLoginStore = create((set) => ({
     const { error } = await supabase.auth.signOut();
 
     if (error) {
-      console.error("로그아웃 실패:", error.message);
+      // console.error("로그아웃 실패:", error.message);
       set(() => ({ isUser: true }));
       alert("로그아웃 실패: " + error.message);
       return false;
     } else {
-      console.log("로그아웃 성공:");
+      // console.log("로그아웃 성공:");
       set(() => ({ isUser: false }));
       return true;
     }
