@@ -3,7 +3,7 @@ import { useMovieListStore } from "../store/MovieListStore";
 import { useLoaderData } from "react-router";
 import Loading from "./Loading";
 import MovieCard from "../components/MovieCard";
-import ozChacracter from "../assets/oz-character.png";
+import ozCharacter from "../assets/oz-character.png";
 
 const NowPlayingMovie = () => {
   const { nowPlayingMovieList, isLoading, getNowPlayingMovieList } =
@@ -63,7 +63,7 @@ const NowPlayingMovie = () => {
         className="w-full h-[250px] mt-10 flex justify-center items-center"
       >
         <img
-          src={ozChacracter}
+          src={ozCharacter}
           alt="oz 캐릭터"
           className="invert rounded-full pt-5 animate-bounce scale-50"
         />

@@ -4,7 +4,6 @@ import Layout from "./pages/Layout";
 function App() {
   const isDark = useModeStore((state) => state.isDark);
 
-  console.log(isDark);
   return (
     <div
       className={

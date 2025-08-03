@@ -19,7 +19,6 @@ export const useLoginStore = create((set) => ({
       alert("로그인 실패: " + error.message);
     } else {
       // console.log("로그인 성공:", data);
-      set(() => ({ isUser: true }));
     }
   },
 

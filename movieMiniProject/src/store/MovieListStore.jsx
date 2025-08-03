@@ -141,3 +141,24 @@ export const useMovieDetailDataStore = create((set) => ({
     }
   },
 }));
+
+export const useFavoriteMovieListStore = create((set) => ({
+  favoriteMovieList: [],
+
+  addToFavorites: (newMovie) => {
+    set((state) => ({
+      favoriteMovieList: [...state.favoriteMovieList, newMovie],
+    }));
+  },
+
+  removeFromFavorites: (movie) => {
+    set(
+      (state) =>
+        state.favoriteMovieList.indexOf(movie) !== -1 &&
+        state.favoriteMovieList.splice(
+          state.favoriteMovieList.indexOf(movie),
+          1
+        )
+    );
+  },
+}));

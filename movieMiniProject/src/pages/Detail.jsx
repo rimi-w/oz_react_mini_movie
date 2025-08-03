@@ -1,4 +1,5 @@
 import { useLoaderData, useNavigation } from "react-router";
+import FavoriteButton from "../components/FavoriteButton";
 
 const Detail = () => {
   const movieDetailData = useLoaderData();
@@ -23,12 +24,15 @@ const Detail = () => {
         alt={`${movieDetailData.title}의 포스터`}
       />
       <div className="w-screen h-[90%] flex flex-col justify-center items-center gap-5 sm:flex-row bg-[#00000058]">
-        <img
-          className="w-[50%] max-w-[371px] min-w-[331px] max-h-[548px] opacity-70 sm:opacity-100 shadow-[1px_1px_10px_10px_#ffffff55] rounded-4xl"
-          src={baseUrl + movieDetailData.poster_path}
-          alt={`${movieDetailData.title}의 포스터`}
-        />
-        <div className="w-[100%] max-h-[562px] sm:w-[40%] absolute bg-[#00000058] sm:relative sm:bg-[#ffffff00] flex flex-col items-start gap-3 overflow-y-scroll [&::-webkit-scrollbar]:hidden p-7">
+        <div className="relative">
+          <img
+            className="w-[50%] max-w-[371px] min-w-[331px] max-h-[548px] opacity-70 sm:opacity-100 shadow-[1px_1px_10px_10px_#ffffff55] rounded-4xl"
+            src={baseUrl + movieDetailData.poster_path}
+            alt={`${movieDetailData.title}의 포스터`}
+          />
+          <FavoriteButton movie={movieDetailData} />
+        </div>
+        <div className="w-[100%] max-h-[387px] sm:w-[40%] absolute bg-[#00000058] sm:relative sm:bg-[#ffffff00] flex flex-col items-start gap-3 overflow-y-scroll [&::-webkit-scrollbar]:hidden p-7">
           <div className="flex justify-evenly items-end gap-3">
             <h1 className="text-3xl font-extrabold">
               {movieDetailData.title}
