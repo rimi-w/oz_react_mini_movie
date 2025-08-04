@@ -20,6 +20,7 @@ const NowPlayingMovie = () => {
         setPage((prev) => prev + 1);
       }
     });
+
     if (observerRef.current) {
       observer.observe(observerRef.current);
     }
@@ -33,7 +34,9 @@ const NowPlayingMovie = () => {
   useEffect(() => {
     async function fetchData() {
       if (fetchedPagesRef.current.has(page)) return; // 이미 렌더링한 page일 경우 return
+
       const data = await getNowPlayingMovieList(page);
+
       fetchedPagesRef.current.add(page); // 중복방지하기 위해 현재 page 저장
 
       return data;
@@ -42,7 +45,6 @@ const NowPlayingMovie = () => {
     fetchData();
   }, [getNowPlayingMovieList, page]);
 
-  if (isLoading) return <Loading />;
   const nowPlayingMoviesList = nowPlayingMovieList.filter(
     (el) => el.adult === false
   );

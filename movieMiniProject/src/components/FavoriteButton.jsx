@@ -18,7 +18,7 @@ const FavoriteButton = ({ movie }) => {
   //     }
   //   };
 
-  //   console.log(favoriteMovieList);
+  console.log(favoriteMovieList);
 
   return (
     <>

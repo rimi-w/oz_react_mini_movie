@@ -10,6 +10,9 @@ export const useUserData = () => {
         data: { user },
         error,
       } = await supabase.auth.getUser();
+      if (error) {
+        console.log(`error`, error);
+      }
       setUserData(user.user_metadata);
     }
     getUserData();
