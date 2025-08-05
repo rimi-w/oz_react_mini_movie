@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useFavoriteMovieListStore } from "../store/MovieListStore";
+import { useUserData } from "../hooks/useUserData";
 
 const FavoriteButton = ({ movie }) => {
   const { favoriteMovieList, addToFavorites, removeFromFavorites } =
     useFavoriteMovieListStore();
   const [isFavorite, setIsFavorite] = useState(false);
+  const userData = useUserData();
 
   //   const addToFavorites = (newMovie) => {
   //     setFavoriteMovies([...favoriteMovies, newMovie]);
@@ -18,7 +20,12 @@ const FavoriteButton = ({ movie }) => {
   //     }
   //   };
 
-  console.log(favoriteMovieList);
+  console.log(userData);
+  userData &&
+    localStorage.setItem(
+      `myMovies-${userData.sub}`,
+      JSON.stringify([...favoriteMovieList])
+    );
 
   return (
     <>

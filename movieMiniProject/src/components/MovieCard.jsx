@@ -1,4 +1,5 @@
 import { NavLink } from "react-router";
+import FavoriteButton from "./FavoriteButton";
 
 const MovieCard = ({ movie }) => {
   const baseUrl = "https://image.tmdb.org/t/p/w500";

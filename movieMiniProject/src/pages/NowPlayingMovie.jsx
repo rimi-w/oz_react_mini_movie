@@ -2,9 +2,9 @@ import { useRef, useState } from "react";
 import { useMovieListStore } from "../store/MovieListStore";
 import { useLoaderData } from "react-router";
 import { useThrottle } from "../hooks/useThrottle";
+import { useObserver } from "../hooks/useObserver";
 import MovieCard from "../components/MovieCard";
 import ozCharacter from "../assets/oz-character.png";
-import { useObserver } from "../hooks/useObserver";
 
 const NowPlayingMovie = () => {
   const { nowPlayingMovieList, getNowPlayingMovieList } = useMovieListStore();
