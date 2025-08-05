@@ -21,7 +21,7 @@ const Input = ({
   };
   return (
     <>
-      <label htmlFor="" className="flex flex-col gap-1">
+      <label className="flex flex-col gap-1">
         <input
           type={type}
           placeholder={placeHolder}

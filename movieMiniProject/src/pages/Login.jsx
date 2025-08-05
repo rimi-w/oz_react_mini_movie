@@ -25,9 +25,10 @@ const Login = () => {
   return (
     <>
       <form
+        name="login"
         onSubmit={(e) => {
-          isUser && navigate(`/`);
           logInWithEmail(e, emailInput, passwordInput);
+          isUser && navigate(`/`);
         }}
         className="pt-[200px] flex flex-col justify-center items-center gap-10"
       >

@@ -12,7 +12,7 @@ function MyPage() {
 
   useEffect(() => {
     userData && setIsUser(true); // 없으면 로그인페이지로 넘어감.
-    userData && !isUser && (navigate(`/login`), alert(`로그인이 필요합니다`));
+    !isUser && (navigate(`/login`), alert(`로그인이 필요합니다`));
   }, [userData, isUser, setIsUser, navigate]);
 
   if (!isUser) return null;

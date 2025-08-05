@@ -15,6 +15,7 @@ const Signup = () => {
   return (
     <article className="pt-[150px] flex justify-center items-center">
       <form
+        name="signup"
         onSubmit={(e) => {
           e.preventDefault(); // 새로고침 막기 => 이후 함수 실행하기 위함.
           signup(emailInput, nameInput, passwordInput);
