@@ -7,7 +7,7 @@ export const useMovieListStore = create((set) => ({
   upcomingMovieList: [],
   isLoading: false,
 
-  getPopularMovieList: async () => {
+  getPopularMovieList: async (page) => {
     try {
       set({ isLoading: true });
       const { VITE_API_TOKEN } = import.meta.env;
@@ -19,12 +19,14 @@ export const useMovieListStore = create((set) => ({
         },
       };
       const res = await fetch(
-        `https://api.themoviedb.org/3/movie/popular?language=ko-KR&page=1`,
+        `https://api.themoviedb.org/3/movie/popular?language=ko-KR&page=${page}`,
         options
       );
       const data = await res.json();
       if (res.ok) {
-        set({ popularMovieList: data.results });
+        set((state) => ({
+          popularMovieList: [...state.popularMovieList, ...data.results],
+        }));
       }
     } catch (error) {
       console.log(`error : `, error);
@@ -32,7 +34,7 @@ export const useMovieListStore = create((set) => ({
       set({ isLoading: false });
     }
   },
-  getTopRatedMovieList: async () => {
+  getTopRatedMovieList: async (page) => {
     try {
       set({ isLoading: true });
       const { VITE_API_TOKEN } = import.meta.env;
@@ -44,12 +46,14 @@ export const useMovieListStore = create((set) => ({
         },
       };
       const res = await fetch(
-        `https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=1`,
+        `https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=${page}`,
         options
       );
       const data = await res.json();
       if (res.ok) {
-        set({ topRatedMovieList: data.results });
+        set((state) => ({
+          topRatedMovieList: [...state.topRatedMovieList, ...data.results],
+        }));
       }
     } catch (error) {
       console.log(`error : `, error);
@@ -85,7 +89,7 @@ export const useMovieListStore = create((set) => ({
       set({ isLoading: false });
     }
   },
-  getUpcomingMovieList: async () => {
+  getUpcomingMovieList: async (page) => {
     try {
       set({ isLoading: true });
       const { VITE_API_TOKEN } = import.meta.env;
@@ -97,12 +101,14 @@ export const useMovieListStore = create((set) => ({
         },
       };
       const res = await fetch(
-        `https://api.themoviedb.org/3/movie/upcoming?language=ko-KR&page=1`,
+        `https://api.themoviedb.org/3/movie/upcoming?language=ko-KR&page=${page}`,
         options
       );
       const data = await res.json();
       if (res.ok) {
-        set({ upcomingMovieList: data.results });
+        set((state) => ({
+          upcomingMovieList: [...state.upcomingMovieList, ...data.results],
+        }));
       }
     } catch (error) {
       console.log(`error : `, error);

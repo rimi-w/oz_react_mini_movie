@@ -18,7 +18,7 @@ export const useLoginStore = create((set) => ({
       set(() => ({ isUser: false }));
       alert("로그인 실패: " + error.message);
     } else {
-      // console.log("로그인 성공:", data);
+      console.log("로그인 성공:", data);
     }
   },
 
@@ -29,6 +29,7 @@ export const useLoginStore = create((set) => ({
     if (error) {
       console.log(`error : `, error);
     } else {
+      console.log("google 로그인 성공:", data);
       set(() => ({ isUser: true }));
     }
   },
@@ -40,6 +41,7 @@ export const useLoginStore = create((set) => ({
     if (error) {
       console.log(`error : `, error);
     } else {
+      console.log("kakao 로그인 성공:", data);
       set(() => ({ isUser: true }));
     }
   },
@@ -51,6 +53,7 @@ export const useLoginStore = create((set) => ({
     if (error) {
       console.log(`error : `, error);
     } else {
+      console.log("github 로그인 성공:", data);
       set(() => ({ isUser: true }));
     }
   },

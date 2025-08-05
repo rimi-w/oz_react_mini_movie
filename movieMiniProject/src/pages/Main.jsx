@@ -8,9 +8,13 @@ const Main = () => {
   const nowPlayingMoviesList = nowPlaying.results.filter(
     (el) => el.adult === false
   );
-  const upcomingMoviesList = upcoming.filter((el) => el.adult === false);
-  const topRatedMoviesList = topRated.filter((el) => el.adult === false);
-  const popularMoviesList = popular.filter((el) => el.adult === false);
+  const upcomingMoviesList = upcoming.results.filter(
+    (el) => el.adult === false
+  );
+  const topRatedMoviesList = topRated.results.filter(
+    (el) => el.adult === false
+  );
+  const popularMoviesList = popular.results.filter((el) => el.adult === false);
 
   return (
     <>

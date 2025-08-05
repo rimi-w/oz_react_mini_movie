@@ -1,49 +1,32 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useMovieListStore } from "../store/MovieListStore";
 import { useLoaderData } from "react-router";
-import Loading from "./Loading";
+import { useThrottle } from "../hooks/useThrottle";
 import MovieCard from "../components/MovieCard";
 import ozCharacter from "../assets/oz-character.png";
+import { useObserver } from "../hooks/useObserver";
 
 const NowPlayingMovie = () => {
-  const { nowPlayingMovieList, isLoading, getNowPlayingMovieList } =
-    useMovieListStore();
+  const { nowPlayingMovieList, getNowPlayingMovieList } = useMovieListStore();
   const nowPlayingMovies = useLoaderData();
   const [page, setPage] = useState(1);
-  const fetchedPagesRef = useRef(new Set()); // 이미 요청한 페이지 자동 기억 -> Set()은 중복없애주는 함수
   const observerRef = useRef();
+  const isFetchingRef = useRef(false);
+  const fetchedPagesRef = useRef(new Set());
 
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      const firstEntry = entries[0];
-      if (firstEntry.isIntersecting) {
-        setPage((prev) => prev + 1);
-      }
-    });
+  const throttledFetch = useThrottle(async (page) => {
+    if (isFetchingRef.current || fetchedPagesRef.current.has(page)) return; // fetching 중이거나 이미 fetch 한 page 일경우 그냥 리턴
 
-    if (observerRef.current) {
-      observer.observe(observerRef.current);
-    }
-    return () => {
-      if (observerRef.current) {
-        observer.unobserve(observerRef.current);
-      }
-    };
-  }, [observerRef.current]);
+    isFetchingRef.current = true;
+    await getNowPlayingMovieList(page);
+    fetchedPagesRef.current.add(page);
+    isFetchingRef.current = false;
+    setPage((prev) => prev + 1); // ✅ fetch 성공 시 page 증가
+  }, 1000);
 
-  useEffect(() => {
-    async function fetchData() {
-      if (fetchedPagesRef.current.has(page)) return; // 이미 렌더링한 page일 경우 return
-
-      const data = await getNowPlayingMovieList(page);
-
-      fetchedPagesRef.current.add(page); // 중복방지하기 위해 현재 page 저장
-
-      return data;
-    }
-
-    fetchData();
-  }, [getNowPlayingMovieList, page]);
+  useObserver(observerRef, () => {
+    throttledFetch(page);
+  });
 
   const nowPlayingMoviesList = nowPlayingMovieList.filter(
     (el) => el.adult === false
@@ -62,7 +45,7 @@ const NowPlayingMovie = () => {
       </div>
       <div
         ref={observerRef}
-        className="w-full h-[250px] mt-10 flex justify-center items-center"
+        className="w-full h-[250px] mt-15 flex justify-center items-center"
       >
         <img
           src={ozCharacter}
