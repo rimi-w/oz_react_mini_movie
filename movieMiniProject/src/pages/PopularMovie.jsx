@@ -3,12 +3,14 @@ import { useMovieListStore } from "../store/MovieListStore";
 import { useLoaderData } from "react-router";
 import { useThrottle } from "../hooks/useThrottle";
 import { useObserver } from "../hooks/useObserver";
+import { useModeStore } from "../store/ModeStore";
 import MovieCard from "../components/MovieCard";
 import ozCharacter from "../assets/oz-character.png";
 
 const PopularMovie = () => {
   const { popularMovieList, getPopularMovieList } = useMovieListStore();
   const popularMovies = useLoaderData();
+  const { isDark } = useModeStore();
   const [page, setPage] = useState(1);
   const observerRef = useRef();
   const isFetchingRef = useRef(false);
@@ -47,7 +49,9 @@ const PopularMovie = () => {
         <img
           src={ozCharacter}
           alt="oz 캐릭터"
-          className="invert rounded-full pt-5 animate-bounce scale-50"
+          className={`${
+            isDark ? `invert` : ``
+          } rounded-full pt-5 animate-bounce scale-50`}
         />
       </div>
     </div>

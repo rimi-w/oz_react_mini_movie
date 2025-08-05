@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { regExp } from "../constants/regularExpression";
 import { errorMessage } from "../constants/errorMessage";
 import { signup } from "../constants/signup";
+import { useModeStore } from "../store/ModeStore";
 import Input from "../components/Input";
 
 const Signup = () => {
@@ -11,6 +12,7 @@ const Signup = () => {
   const [passwordInput, setPasswordInput] = useState(``);
   const [checkPasswordInput, setCheckPasswordInput] = useState(``);
   const navigate = useNavigate();
+  const { isDark } = useModeStore();
 
   return (
     <article className="pt-[150px] flex justify-center items-center">
@@ -21,7 +23,9 @@ const Signup = () => {
           signup(emailInput, nameInput, passwordInput);
           navigate(`/`);
         }}
-        className="w-[40%] min-w-[422px] h-[800px] pt-10 rounded-[40px] m-auto bg-[#ffffff5e] flex flex-col justify-center items-center gap-5"
+        className={`${
+          isDark ? `bg-[#ffffff5e]` : `bg-[#00000013]`
+        } w-[40%] min-w-[422px] h-[800px] pt-10 rounded-[40px] m-auto flex flex-col justify-center items-center gap-5`}
       >
         <h1 className="text-5xl pb-8">🎉 회원가입 🎉</h1>
         <div className="w-[350px] flex flex-col items-center gap-6">

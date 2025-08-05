@@ -6,11 +6,11 @@ function App() {
 
   return (
     <div
-      className={
+      className={`w-screen h-screen ${
         isDark
           ? `bg-black text-[rgb(253,250,248)]`
           : `bg-[rgb(253,250,248)] text-black`
-      }
+      }`}
     >
       <Layout />
     </div>

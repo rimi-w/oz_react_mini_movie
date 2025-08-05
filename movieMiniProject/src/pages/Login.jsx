@@ -3,6 +3,7 @@ import { useState } from "react";
 import { regExp } from "../constants/regularExpression";
 import { errorMessage } from "../constants/errorMessage";
 import { useLoginStore } from "../store/LoginStore";
+import { useModeStore } from "../store/ModeStore";
 import Input from "../components/Input";
 import googleImg from "../assets/google.png";
 import kakaoImg from "../assets/kakao.png";
@@ -19,8 +20,10 @@ const Login = () => {
     logInWithKakao,
     logInWithGithub,
   } = useLoginStore();
+  const { isDark } = useModeStore();
 
   // console.log(isUser);
+  // console.log(isDark);
 
   return (
     <>
@@ -54,7 +57,9 @@ const Login = () => {
           </div>
           <button
             type="submit"
-            className="w-[108px] bg-[#ffffff7a] rounded-3xl text-xl"
+            className={`w-[108px] rounded-3xl text-xl ${
+              isDark ? `bg-[#ffffff7a]` : `bg-[#0000003d]`
+            }`}
           >
             Login
           </button>
@@ -75,7 +80,7 @@ const Login = () => {
           <img
             src={githubImg}
             alt="github 로고"
-            className="size-12 invert"
+            className={`size-12 ${isDark ? `invert` : ``}`}
             onClick={logInWithGithub}
           />
         </div>

@@ -54,7 +54,7 @@ const NavBar = () => {
 
   return (
     <nav
-      className={`w-screen h-24 p-[0_40px_15px_30px] flex justify-between items-end fixed z-50`}
+      className={`w-screen h-24 p-[0_40px_15px_30px] flex justify-between items-end fixed z-[999]`}
     >
       <NavLink to={"/"} end>
         {isDark && (
@@ -75,7 +75,9 @@ const NavBar = () => {
       <input
         value={searchedString}
         type="text"
-        className="w-[60%] h-10 bg-[#ffffff80] rounded-full p-[0_20px]"
+        className={`w-[60%] h-10 rounded-full p-[0_20px] ${
+          isDark ? `bg-[#ffffff80] ` : `bg-[#0000003d]`
+        }`}
         placeholder="🔍 영화 제목을 검색하세요"
         onChange={(e) => {
           setSearchString(e.target.value);
@@ -134,8 +136,18 @@ const NavBar = () => {
           />
         )}
         {profileClick && (
-          <div className="w-30 flex flex-col justify-center items-center p-1 absolute right-10 top-[90px] bg-[#ffffff92] rounded-[5px]">
-            <p className="w-[100%] text-center pb-2 text-[#ffffffc8] border-b-2 border-[#8484847b]">
+          <div
+            className={`${
+              isDark ? `bg-[#4d4d4dc8] ` : `bg-[#dcd9d9c3] `
+            } w-30 flex flex-col justify-center items-center p-1 absolute right-10 top-[90px] rounded-[5px]`}
+          >
+            <p
+              className={`${
+                isDark
+                  ? `text-[#ffffffc8] border-[#ffffff7b]`
+                  : `text-[#000000c8] border-[#3636367b]`
+              } w-[100%] text-center pb-2 border-b-2 `}
+            >
               {userData.name} 님
             </p>
             <NavLink
@@ -143,7 +155,13 @@ const NavBar = () => {
               onClick={handleProfile}
               className="w-[100%]"
             >
-              <p className="text-center text-[#0000006f] active:text-[#0f2374cf] p-[8px_0] hover:bg-[#7396ffb1]">
+              <p
+                className={`${
+                  isDark
+                    ? `text-[#ffffff87] hover:bg-[#495a8ccd]`
+                    : `text-[#00000099] hover:bg-[#7396ffb1]`
+                } text-center active:text-[#0f2374cf] p-[8px_0]`}
+              >
                 My page
               </p>
             </NavLink>
@@ -153,7 +171,11 @@ const NavBar = () => {
                 handleProfile();
                 result && navigate(`/`);
               }}
-              className="w-[100%] text-center text-[#0000006f] active:text-[#0f2374cf] border-[#8484847b] border-t-2 p-[8px_0] hover:bg-[#7396ffb1]"
+              className={`${
+                isDark
+                  ? `text-[#ffffff87] hover:bg-[#495a8ccd]`
+                  : `text-[#00000099] hover:bg-[#7396ffb1]`
+              } w-[100%] text-center  active:text-[#0f2374cf] border-[#8484847b] border-t-2 p-[8px_0]`}
             >
               Logout
             </p>

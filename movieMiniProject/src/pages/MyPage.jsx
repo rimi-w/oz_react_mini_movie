@@ -2,12 +2,14 @@ import { useEffect } from "react";
 import { useUserData } from "../hooks/useUserData";
 import { useLoginStore } from "../store/LoginStore";
 import { useNavigate } from "react-router";
+import { useModeStore } from "../store/ModeStore";
 import profileImg from "../assets/profile.png";
 import FavoriteMovies from "../components/FavoriteMovies";
 
 function MyPage() {
   const userData = useUserData();
   const { isUser, setIsUser } = useLoginStore();
+  const { isDark } = useModeStore();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,7 +28,7 @@ function MyPage() {
           <img
             src={profileImg}
             alt="profile 이미지"
-            className="invert size-30 rounded-full"
+            className={`${isDark ? `invert` : ``} size-30 rounded-full`}
           />
         )}
         {userData && userData.avatar_url && (
@@ -37,10 +39,20 @@ function MyPage() {
           />
         )}
         <p className="pt-5">{userData && userData.name}</p>
-        <p className="text-[#ffffff7b]">{userData && userData.email}</p>
+        <p className={isDark ? `text-[#ffffff7b]` : `text-[#00000072]`}>
+          {userData && userData.email}
+        </p>
       </div>
-      <div className="w-[calc(100vw-340px)] min-w-[450px] mt-5 mr-10 p-[35px_40px] bg-[#ffffff3b] rounded-4xl flex flex-col items-start">
-        <p className="w-[100%] border-b-2 border-[#00000077] pb-2">
+      <div
+        className={`${
+          isDark ? `bg-[#ffffff3b]` : `bg-[#0523483b]`
+        } w-[calc(100vw-340px)] min-w-[450px] mt-5 mr-10 p-[35px_40px] rounded-4xl flex flex-col items-start`}
+      >
+        <p
+          className={`${
+            isDark ? `border-[#ffffff77]` : `border-[#00000077]`
+          } w-[100%] border-b-2  pb-2 mb-4`}
+        >
           {" "}
           My Movies 🎞
         </p>
