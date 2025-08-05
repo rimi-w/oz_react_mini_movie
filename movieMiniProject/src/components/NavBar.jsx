@@ -57,20 +57,11 @@ const NavBar = () => {
       className={`w-screen h-24 p-[0_40px_15px_30px] flex justify-between items-end fixed z-[999]`}
     >
       <NavLink to={"/"} end>
-        {isDark && (
-          <img
-            className="invert size-15 rounded-full mr-[20px]"
-            src={logo}
-            alt="OZ Movie 로고"
-          />
-        )}
-        {!isDark && (
-          <img
-            className="size-15 rounded-full mr-[20px]"
-            src={logo}
-            alt="OZ Movie 로고"
-          />
-        )}
+        <img
+          className={`${isDark ? `invert` : ``} size-15 rounded-full mr-[20px]`}
+          src={logo}
+          alt="OZ Movie 로고"
+        />
       </NavLink>
       <input
         value={searchedString}
@@ -115,7 +106,7 @@ const NavBar = () => {
           )}
         </div>
         {!isUser && (
-          <div className="w-12.5 items-end gap-3 text-[15px] ml-[10px] hidden sm:flex sm:flex-col sm:block">
+          <div className="w-12.5 items-end gap-3 text-[15px] ml-[10px] hidden sm:flex sm:flex-col">
             <button onClick={() => navigate(`/login`)}>LogIn</button>
           </div>
         )}

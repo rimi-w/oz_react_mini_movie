@@ -2,7 +2,9 @@ import { useModeStore } from "./store/ModeStore";
 import Layout from "./pages/Layout";
 
 function App() {
-  const isDark = useModeStore((state) => state.isDark);
+  const { isDark } = useModeStore();
+
+  localStorage.setItem(`isDark`, isDark);
 
   return (
     <div
