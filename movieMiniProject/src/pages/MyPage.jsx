@@ -13,8 +13,10 @@ function MyPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // 로그인 안하고 my-page 갈 경우 alert가 안뜸.
     userData && setIsUser(true); // 없으면 로그인페이지로 넘어감.
-    !isUser && (navigate(`/login`), alert(`로그인이 필요합니다`));
+    // userData가 없으면 로그인 상태에서 my-page에서 새로고침시 alert 뜨고 login 페이지로 넘어감
+    userData && !isUser && (navigate(`/login`), alert(`로그인이 필요합니다`));
   }, [userData, isUser, setIsUser, navigate]);
 
   if (!isUser) return null;

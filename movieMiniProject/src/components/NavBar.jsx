@@ -45,7 +45,7 @@ const NavBar = () => {
     } else {
       navigate(`/`);
     }
-    return setSearchedString(``);
+    // return setSearchedString(``);
   }, [debounceValue, navigate]);
 
   const handleProfile = () => {
@@ -74,17 +74,19 @@ const NavBar = () => {
           setSearchString(e.target.value);
           setSearchedString(e.target.value);
         }}
-        onKeyDown={(e) => {
-          // enter 쳤을때 해당 페이지로 이동
-          if (e.key === `Enter`) {
-            const value = searchString.trim();
-            if (!value) {
-              navigate(`/`);
-              return;
-            }
-            navigate(`/search?name=${value}`);
-          }
-        }}
+        // onKeyDown={(e) => {
+        //   // enter 쳤을때 해당 페이지로 이동
+        //   if (e.key === `Enter`) {
+        //     console.log(searchString);
+        //     const value = searchString.trim();
+        //     if (!value) {
+        //       navigate(`/`);
+        //       return;
+        //     }
+        //     navigate(`/search?name=${value}`);
+        //     setSearchedString(``);
+        //   }
+        // }}
       />
       <div className="flex items-end gap-2">
         <div className="flex">
