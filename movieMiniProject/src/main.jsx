@@ -18,7 +18,7 @@ import TopRatedMovie from "./pages/TopRatedMovie.jsx";
 import PopularMovie from "./pages/PopularMovie.jsx";
 import Loading from "./pages/Loading.jsx";
 import Search from "./pages/Search.jsx";
-import Login from "./pages/logIn.jsx";
+import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
 import MyPage from "./pages/MyPage.jsx";
 
