@@ -1,4 +1,4 @@
-import { useLoaderData, useSearchParams } from "react-router";
+import { useLoaderData, useSearchParams } from "react-router-dom";
 import { engToKor, getRegExp } from "korean-regexp";
 import MovieCard from "../components/MovieCard";
 

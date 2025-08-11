@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useUserData } from "../hooks/useUserData";
 import { useLoginStore } from "../store/LoginStore";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { useModeStore } from "../store/ModeStore";
 import profileImg from "../assets/profile.png";
 import FavoriteMovies from "../components/FavoriteMovies";

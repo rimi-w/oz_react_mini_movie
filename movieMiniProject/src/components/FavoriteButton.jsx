@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useFavoriteMovieListStore } from "../store/MovieListStore";
 import { useUserData } from "../hooks/useUserData";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 const FavoriteButton = ({ movie }) => {
   const { favoriteMovieList, addToFavorites, removeFromFavorites } =

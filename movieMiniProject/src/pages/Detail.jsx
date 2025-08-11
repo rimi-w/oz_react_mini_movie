@@ -1,4 +1,4 @@
-import { useLoaderData, useNavigation } from "react-router";
+import { useLoaderData, useNavigation } from "react-router-dom";
 import FavoriteButton from "../components/FavoriteButton";
 import { useModeStore } from "../store/ModeStore";
 

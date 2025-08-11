@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { useMovieListStore } from "../store/MovieListStore";
-import { useLoaderData } from "react-router";
+import { useLoaderData } from "react-router-dom";
 import { useThrottle } from "../hooks/useThrottle";
 import { useObserver } from "../hooks/useObserver";
 import { useModeStore } from "../store/ModeStore";

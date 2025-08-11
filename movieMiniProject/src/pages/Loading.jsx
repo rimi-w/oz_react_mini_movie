@@ -1,4 +1,4 @@
-import { useNavigation } from "react-router";
+import { useNavigation } from "react-router-dom";
 import { useModeStore } from "../store/ModeStore";
 import logo from "../assets/logo.png";
 import ozCharacter from "../assets/oz-character.png";

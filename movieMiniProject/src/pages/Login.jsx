@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { regExp } from "../constants/regularExpression";
 import { errorMessage } from "../constants/errorMessage";

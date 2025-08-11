@@ -1,4 +1,4 @@
-import { NavLink, useLoaderData } from "react-router";
+import { NavLink, useLoaderData } from "react-router-dom";
 import { useModeStore } from "../store/ModeStore";
 import SwiperMovie from "../components/SwiperMovie";
 import MainBanner from "../components/MainBanner";

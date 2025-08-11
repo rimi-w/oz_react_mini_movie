@@ -1,4 +1,4 @@
-import { NavLink, useRouteError } from "react-router";
+import { NavLink, useRouteError } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { useModeStore } from "../store/ModeStore";
 

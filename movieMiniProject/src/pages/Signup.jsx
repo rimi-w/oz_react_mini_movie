@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { regExp } from "../constants/regularExpression";
 import { errorMessage } from "../constants/errorMessage";
 import { signup } from "../constants/signup";

@@ -2,7 +2,7 @@ import profile from "../assets/profile.png";
 import logo from "../assets/logo.png";
 import darkToggle from "../assets/darkToggle.png";
 import lightToggle from "../assets/lightToggle.png";
-import { NavLink, useNavigate } from "react-router";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useModeStore } from "../store/ModeStore";
 import { supabase } from "../supabase";
